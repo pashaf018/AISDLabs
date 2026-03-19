@@ -124,18 +124,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
+    <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="FibonacciTest.h" />
+    <ClInclude Include="Includes.h" />
+    <ClInclude Include="MergeSort.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Orders.h" />
     <ClInclude Include="OrdersTest.h" />
+    <ClInclude Include="Tree.h" />
+    <ClInclude Include="TreeNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Algorithm.cpp" />
+    <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="FibonacciTest.cpp" />
+    <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Orders.cpp" />
     <ClCompile Include="OrdersTest.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="TreeNode.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

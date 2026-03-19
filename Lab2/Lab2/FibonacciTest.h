@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
-#include <ctime>
+#include "Includes.h"
+
 class FibonacciTest
 {
 private:

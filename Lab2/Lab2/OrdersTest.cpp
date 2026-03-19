@@ -1,6 +1,5 @@
 #include "OrdersTest.h"
-#include <iostream>
-#include <ctime>
+
 std::vector<Order> OrdersTest::generateRandom(int count, int maxLenght)
 {
 	std::vector<Order> arr;

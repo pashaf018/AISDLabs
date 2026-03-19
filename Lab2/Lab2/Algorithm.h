@@ -1,8 +1,10 @@
 #pragma once
+
 enum Algorithm
 {
 	TestOrders,
 	TestFibonacci,
-	TestFibonacciStraight
+	TestFibonacciStraight,
+	TestBubbleSort
 };
 
