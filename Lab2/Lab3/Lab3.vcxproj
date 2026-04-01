@@ -127,12 +127,14 @@
     <ClInclude Include="Graphs.h" />
     <ClInclude Include="GraphsCollection.h" />
     <ClInclude Include="Includes.h" />
+    <ClInclude Include="WeightedGraphs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Collection.cpp" />
     <ClCompile Include="Graphs.cpp" />
     <ClCompile Include="GraphsCollection.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="WeightedGraphs.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

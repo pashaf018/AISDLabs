@@ -7,7 +7,9 @@ void printQueue(std::queue<int>);
 
 int main()
 {
-	Graphs graphs = Graphs();
+	/// Task CommonGraphs
+
+	/*Graphs graphs = Graphs();
 	const int size = 5;
 	graphs.generateRandomList(size, 4);
 	graphs.printAdjList();
@@ -51,7 +53,14 @@ int main()
 	printQueue(q);
 	printVisited(visited, size);
 
-	std::cout << "\n\n" << c;
+	std::cout << "\n\n" << c;*/
+
+
+
+
+	/// Task WeighedGraphs
+
+
 }
 
 void printVisited(int visited[],int size)
