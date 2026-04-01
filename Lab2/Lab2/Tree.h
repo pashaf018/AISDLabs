@@ -9,10 +9,18 @@ public:
 
 	TreeNode* getRoot();
 
-	static TreeNode* push(TreeNode*,int);
+	TreeNode* push(TreeNode*,int);
 
-	static void generateRandom(TreeNode*,int);
+	void generateRandom(int);
 
-	static void printTree(TreeNode*);
+	void printTree(TreeNode*);
+
+	void destroyTree(TreeNode*);
+
+	double testBinarySearch(int);
+
+	int findMin(TreeNode*);
+
+	static double testArray(int);
 };
 

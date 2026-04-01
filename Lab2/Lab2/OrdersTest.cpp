@@ -18,12 +18,9 @@ double OrdersTest::testAlgorithm(int count)
 	for (int i = 0; i < count; i++)
 	{
 		Orders orders = Orders(OrdersTest::generateRandom(10, 100));
-		printOrders(orders.getOrders());
 		time_t t1 = clock();
 		Orders solved = Orders(OrdersAlgorithm(sortOrders(orders.getOrders())));
 		time_t t2 = clock();
-		printOrders(solved.getOrders());
-		std::cout << "____________________________________________________\n";
 		result += (double)(t2 - t1) / CLOCKS_PER_SEC;
 	}
 	return (double)result / count;
