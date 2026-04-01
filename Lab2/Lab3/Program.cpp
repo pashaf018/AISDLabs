@@ -1,9 +1,74 @@
 #include "Includes.h"
 #include "Graphs.h"
 
+void printVisited(int[], int);
+
+void printQueue(std::queue<int>);
+
 int main()
 {
 	Graphs graphs = Graphs();
-	graphs.generateRandomList(5, 4);
+	const int size = 5;
+	graphs.generateRandomList(size, 4);
 	graphs.printAdjList();
+
+	GraphsCollection list = graphs.getList();
+
+	int visited[size];
+	for (int i = 0; i < size; i++)
+	{
+		visited[i] = 0;
+	}
+
+	std::queue<int> q;
+
+	q.push(0);
+	int c = 0;
+	while (!q.empty())
+	{
+		c++;
+		int visiting = q.front();
+		if (visited[visiting] == 1)
+		{
+			q.pop();
+			continue;
+		}
+		visited[visiting] = 1;
+		q.pop();
+
+		std::vector<int> newVisiting = list.getElement(visiting);
+		for (int i = 0; i < newVisiting.size(); i++)
+		{
+			if(visited[newVisiting[i]] == 0)
+			{
+				q.push(newVisiting[i]);
+			}
+		}
+		printQueue(q);
+		printVisited(visited, size);
+	}
+
+	printQueue(q);
+	printVisited(visited, size);
+
+	std::cout << "\n\n" << c;
+}
+
+void printVisited(int visited[],int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << i << " == " << visited[i] << std::endl;
+	}
+	std::cout << "------------------------------" << std::endl;
+}
+
+void printQueue(std::queue<int> q)
+{
+	while (!q.empty())
+	{
+		std::cout << q.front() << " -> ";
+		q.pop();
+	}
+	std::cout << "\n\n";
 }

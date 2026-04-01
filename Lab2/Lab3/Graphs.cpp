@@ -1,6 +1,11 @@
 #include "Graphs.h"
 #include "Includes.h"
 
+GraphsCollection Graphs::getList()
+{
+	return list;
+}
+
 void Graphs::generateRandomList(int count,int maxConnections)
 {
 	for (int i = 0; i < count; i++)

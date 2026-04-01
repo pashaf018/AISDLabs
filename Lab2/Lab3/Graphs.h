@@ -7,6 +7,7 @@ private:
 	GraphsCollection list;
 	std::vector<std::vector<int>> arr;
 public:
+	GraphsCollection getList();
 
 	void generateRandomList(int,int);
 
