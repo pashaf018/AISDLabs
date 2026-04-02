@@ -1,5 +1,6 @@
 #include "Includes.h"
 #include "Graphs.h"
+#include "WeightedGraphs.h"
 
 void printVisited(int[], int);
 
@@ -60,7 +61,18 @@ int main()
 
 	/// Task WeighedGraphs
 
+	WeightedGraphs graph = WeightedGraphs();
+	int size = 5;
+	graph.generateRandom(size,3,40);
+	graph.printMatrix(0);
 
+	std::vector<int> visited(size, INT_MAX);
+	visited[0] = 0;
+
+	int res = graph.findMinGraph();
+	graph.printMatrix(1);
+	std::cout << res;
+	
 }
 
 void printVisited(int visited[],int size)
