@@ -22,8 +22,11 @@ int main()
 	OrdersTest::printOrders(solved.getOrders());
 	std::cout << "Среднее время выполнения алгоритма с заявками: " << OrdersTest::testAlgorithm(100);*/
 
-	/*double res = testBubbleSort(100);
-	std::cout << "Среднее время сортировки пузырьком: " << res;*/
+	/*std::vector<int> arr = generateRandomArray(10);
+	printArray(arr);
+	bubbleSort(&arr);
+	printArray(arr);
+	std::cout << "Среднее время сортировки пузырьком: " << testBubbleSort(100);*/
 
 	/*std::vector<int> arr = generateRandomArray(10);
 	printArray(arr);
@@ -31,13 +34,13 @@ int main()
 	printArray(arr);
 	std::cout << "Среднее время сортировки слиянием: " << MergeSort::testMergeSorting(100);*/
 
-	/*TreeNode* node = new TreeNode();
-	node->value = 500;
+
+	TreeNode* node = new TreeNode(500);
 	node->right = nullptr;
 	node->left = nullptr;
 	Tree tree = Tree();
 	std::cout << "Среднее время поиска в двоичном дереве: " << tree.testBinarySearch(10);
-	std::cout << "\nСреднее время поиска в массиве: " << Tree::testArray(10);*/
+	std::cout << "\nСреднее время поиска в массиве: " << Tree::testArray(10);
 
 	//FibonacciTest fibonacci;
 	//std::cout << "Среднее время работы алгоритма Фибоначчи: " << fibonacci.testAlgorithm(100) << "\n\n";
