@@ -14,8 +14,7 @@ TreeNode* Tree::push(TreeNode* node,int val)
 {
 	if (node == nullptr)
 	{
-		TreeNode* newnode = new TreeNode();
-		newnode->value = val;
+		TreeNode* newnode = new TreeNode(val);
 		newnode->left = nullptr;
 		newnode->right = nullptr;
 		return newnode;
@@ -89,8 +88,7 @@ double Tree::testBinarySearch(int count)
 
 	for (int i = 0; i < count; i++)
 	{
-		TreeNode* root = new TreeNode();
-		root->value = 500;
+		TreeNode* root = new TreeNode(500);
 		Root = root;
 		generateRandom(1000000);
 		time_t t1 = clock();
