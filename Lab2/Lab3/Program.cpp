@@ -8,7 +8,7 @@ void printQueue(std::queue<int>);
 
 int main()
 {
-	
+	setlocale(LC_ALL, "Russian");
 
 	/// Task CommonGraphs
 
