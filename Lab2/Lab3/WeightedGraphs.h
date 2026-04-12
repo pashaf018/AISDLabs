@@ -15,7 +15,5 @@ public:
 	void printMatrix(int);
 
 	int findMinGraph();
-
-	int findMinGraphPirated();
 };
 

@@ -67,88 +67,61 @@ void WeightedGraphs::printMatrix(int flag)
 
 int WeightedGraphs::findMinGraph()
 {
-	int result = 0;
-	std::vector<std::vector<int>> newmatrix;
+	std::vector<int> keys(matrix.size(),INT_MAX);
+	std::vector<int> memory(matrix.size(),0);
 	std::vector<int> visited(matrix.size(), 0);
-	for (int i = 0; i < matrix.size(); i++)
-	{
-		std::vector<int> push(matrix.size(), 0);
-		newmatrix.push_back(push);
-	}
-
-	std::queue<int> q;
-
+	keys[0] = 0;
+	std::priority_queue<int> q;
 	q.push(0);
 	while (!q.empty())
 	{
-		int v = q.front();
+		int toLook = q.top();
 		q.pop();
-		if (visited[v] == 1)
+		if (visited[toLook] == 1)
 		{
 			continue;
 		}
-		visited[v] = 1;
-		int min = INT_MAX;
-		int minI = 0;
-		for(int i = 0;i < matrix.size();i++)
+		visited[toLook] = 1;
+		for (int i = 0; i < matrix.size(); i++)
 		{
-			if (matrix[v][i] > 0 && min > matrix[v][i])
+			if (matrix[toLook][i] > 0 && keys[i] > matrix[toLook][i] && visited[i] == 0)
 			{
-				min = matrix[v][i];
-				minI = i;
+				memory[i] = toLook;
+				keys[i] = matrix[toLook][i];
+				q.push(i);
+				std::cout << "Рассматриваемый элемент: " << toLook + 1 << std::endl;
+				for (int j = 0; j < matrix.size(); j++)
+				{
+					std::cout << keys[j] << " ";
+				}
+				std::cout << std::endl;
+				for (int j = 0; j < matrix.size(); j++)
+				{
+					std::cout << memory[j] + 1 << " ";
+				}
+				std::cout << std::endl;
 			}
 		}
-		newmatrix[v][minI] = matrix[v][minI];
-		if (visited[minI] == 1)
-		{
-			continue;
-		}
-		q.push(minI);
 	}
-
-	/// correcting
-
-	for (int i = 0; i < newmatrix.size(); i++)
+	
+	for (int i = 0; i < matrix.size(); i++)
 	{
-		for (int j = 0; j < newmatrix.size(); j++)
-		{
-			if (newmatrix[i][j] != newmatrix[j][i] && newmatrix[i][j] != 0)
-			{
-				newmatrix[j][i] = newmatrix[i][j];
-			}
-			else {
-				newmatrix[i][j] = newmatrix[j][i];
-			}
-		}
+		std::vector<int> oop(matrix.size(), 0);
+		newMatrix.push_back(oop);
 	}
-
-	newMatrix = newmatrix;
-
-	return result;
-}
-
-int WeightedGraphs::findMinGraphPirated()
-{
+	/// сборка
+	for (int i = 0; i < memory.size(); i++)
+	{
+		newMatrix[i][memory[i]] = keys[i];
+		newMatrix[memory[i]][i] = keys[i];
+	}
 	int result = 0;
-	std::vector<int> used(matrix.size(), 0);
-
-	std::priority_queue<std::pair<int,int>,std::vector<std::pair<int, int>>,std::greater<std::pair<int, int>>> q;
-	q.push({ 0,0 });
-
-	while (!q.empty())
+	for (int i = 0; i < newMatrix.size(); i++)
 	{
-		std::pair<int, int> c = q.top();
-		q.pop();
-
-		int dest = c.first;
-		int v = c.second;
-
-		if (used[v] == 1)
+		for (int j = i; j < newMatrix.size(); j++)
 		{
-			continue;
+			result += newMatrix[i][j];
 		}
-
-		used[v] = 1;
-		result += 
 	}
+	return result;
 }

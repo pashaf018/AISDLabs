@@ -8,6 +8,8 @@ void printQueue(std::queue<int>);
 
 int main()
 {
+	
+
 	/// Task CommonGraphs
 
 	/*Graphs graphs = Graphs();
@@ -62,7 +64,7 @@ int main()
 	/// Task WeighedGraphs
 
 	WeightedGraphs graph = WeightedGraphs();
-	int size = 5;
+	int size = 10;
 	graph.generateRandom(size,3,40);
 	graph.printMatrix(0);
 
