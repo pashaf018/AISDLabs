@@ -33,18 +33,14 @@ int* HashTableLinear::find(int* key)
 	int hash = hashFunction(*key);
 	for (int i = hash; i < Size; i++)
 	{
-		if (HashTable[i].Removed)
-		{
-			return nullptr;
-		}
-		if (HashTable[i].Key == *key)
+		if (!HashTable[i].Removed && HashTable[i].Key == *key)
 		{
 			return &HashTable[i].Value;
 		}
 	}
 	for (int i = 0; i < hash && !HashTable[i].Removed; i++)
 	{
-		if (HashTable[i].Key == *key)
+		if (!HashTable[i].Removed && HashTable[i].Key == *key)
 		{
 			return &HashTable[i].Value;
 		}
@@ -59,7 +55,23 @@ int HashTableLinear::hashFunction(int key)
 
 bool HashTableLinear::erase(int key) 
 {
-	// TODO
+	int hash = hashFunction(key);
+	for (int i = hash; i < Size; i++)
+	{
+		if (!HashTable[i].Removed && HashTable[i].Key == key)
+		{
+			HashTable[i].Removed = true;
+			return true;
+		}
+	}
+	for (int i = 0; i < hash; i++)
+	{
+		if (!HashTable[i].Removed && HashTable[i].Key == key)
+		{
+			HashTable[i].Removed = true;
+			return true;
+		}
+	}
 	return false;
 }
 
