@@ -12,7 +12,7 @@ int main()
 
 	/// Task CommonGraphs
 
-	Graphs graphs = Graphs();
+	/*Graphs graphs = Graphs();
 	const int size = 5;
 	graphs.generateRandomList(size, 4);
 	graphs.printAdjList();
@@ -52,15 +52,15 @@ int main()
 	}
 
 	printQueue(q);
-	printVisited(visited, size);
+	printVisited(visited, size);*/
 
 
 
 
 	/// Task WeighedGraphs
 
-	/*WeightedGraphs graph = WeightedGraphs();
-	int size = 10;
+	WeightedGraphs graph = WeightedGraphs();
+	int size = 5;
 	graph.generateRandom(size,3,40);
 	graph.printMatrix(0);
 
@@ -69,7 +69,7 @@ int main()
 
 	int res = graph.findMinGraph();
 	graph.printMatrix(1);
-	std::cout << res;*/
+	std::cout << res;
 	
 }
 
