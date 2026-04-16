@@ -90,7 +90,7 @@ double Tree::testBinarySearch(int count)
 	{
 		TreeNode* root = new TreeNode(500);
 		Root = root;
-		generateRandom(1000000);
+		generateRandom(100000);
 		time_t t1 = clock();
 		findMin(Root);
 		time_t t2 = clock();
@@ -105,7 +105,7 @@ double Tree::testArray(int count)
 {
 	double result = 0;
 	int mas = 100000;
-	int arr[100000];
+	int* arr = new int[mas];
 
 	for (int i = 0; i < count; i++)
 	{
