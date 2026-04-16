@@ -97,7 +97,7 @@ int WeightedGraphs::findMinGraph()
 				std::cout << std::endl;
 				for (int j = 0; j < matrix.size(); j++)
 				{
-					std::cout << memory[j] + 1 << " ";
+					std::cout << memory[j] << " ";
 				}
 				std::cout << std::endl;
 			}
