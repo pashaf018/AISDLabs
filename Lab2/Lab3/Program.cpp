@@ -12,7 +12,7 @@ int main()
 
 	/// Task CommonGraphs
 
-	/*Graphs graphs = Graphs();
+	Graphs graphs = Graphs();
 	const int size = 5;
 	graphs.generateRandomList(size, 4);
 	graphs.printAdjList();
@@ -28,10 +28,8 @@ int main()
 	std::queue<int> q;
 
 	q.push(0);
-	int c = 0;
 	while (!q.empty())
 	{
-		c++;
 		int visiting = q.front();
 		if (visited[visiting] == 1)
 		{
@@ -56,14 +54,12 @@ int main()
 	printQueue(q);
 	printVisited(visited, size);
 
-	std::cout << "\n\n" << c;*/
-
 
 
 
 	/// Task WeighedGraphs
 
-	WeightedGraphs graph = WeightedGraphs();
+	/*WeightedGraphs graph = WeightedGraphs();
 	int size = 10;
 	graph.generateRandom(size,3,40);
 	graph.printMatrix(0);
@@ -73,7 +69,7 @@ int main()
 
 	int res = graph.findMinGraph();
 	graph.printMatrix(1);
-	std::cout << res;
+	std::cout << res;*/
 	
 }
 
