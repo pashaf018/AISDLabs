@@ -9,5 +9,6 @@ HashElement::HashElement(int key, int value)
 
 HashElement::HashElement()
 {
+	Key = -1;
 	Removed = true;
 }

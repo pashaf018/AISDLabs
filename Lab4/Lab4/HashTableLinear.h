@@ -17,7 +17,7 @@ public:
 
 	int getSize();
 
-	int* find(int*);
+	int* find(int);
 
 	int hashFunction(int);
 

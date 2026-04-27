@@ -125,6 +125,8 @@
   <ItemGroup>
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="HashElement.h" />
+    <ClInclude Include="BinarySearchTree.h" />
+    <ClInclude Include="HashTableChains.h" />
     <ClInclude Include="HashTableLinear.h" />
     <ClInclude Include="Includes.h" />
     <ClInclude Include="TreeElement.h" />
@@ -132,6 +134,8 @@
   <ItemGroup>
     <ClCompile Include="BinarySearchTree.cpp" />
     <ClCompile Include="HashElement.cpp" />
+    <ClCompile Include="BinarySearchTree.cpp" />
+    <ClCompile Include="HashTableChains.cpp" />
     <ClCompile Include="HashTableLinear.cpp" />
     <ClCompile Include="Program.cpp" />
   </ItemGroup>

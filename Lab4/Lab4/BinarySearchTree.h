@@ -1,10 +1,24 @@
 #pragma once
-#include "TreeElement.h"
+#include "Includes.h"
 
-class BinarySearchTree
+struct BinarySearchTree
 {
-private:
-	TreeElement Root;
-public:
+	int Value;
+	BinarySearchTree* left, *right;
+	BinarySearchTree(int value) : Value(value), left(nullptr), right(nullptr) {}
+
+	BinarySearchTree* findMin(BinarySearchTree*);
+
+	BinarySearchTree* insert(BinarySearchTree*, int);
+
+	BinarySearchTree* search(BinarySearchTree*, int);
+
+	BinarySearchTree* erase(BinarySearchTree*, int);
+
+	void deleteTree(BinarySearchTree*);
+
+	BinarySearchTree* findAny(BinarySearchTree*);
+
+	void toString(BinarySearchTree*);
 };
 
