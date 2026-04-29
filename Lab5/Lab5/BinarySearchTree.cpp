@@ -13,47 +13,47 @@ BinarySearchTree* BinarySearchTree::findMin(BinarySearchTree* root)
 	return root;
 }
 
-BinarySearchTree* BinarySearchTree::insert(BinarySearchTree* root, int value)
+BinarySearchTree* BinarySearchTree::insert(BinarySearchTree* root,int key, int value)
 {
-	if (root == nullptr) { return new BinarySearchTree(value); }
-	if (value < root->Value)
+	if (root == nullptr) { return new BinarySearchTree(key, value); }
+	if (key < root->Key)
 	{
-		root->left = insert(root->left, value);
+		root->left = insert(root->left, key, value);
 	}
 	else
 	{
-		root->right = insert(root->right, value);
+		root->right = insert(root->right, key, value);
 	}
 	return root;
 }
 
-BinarySearchTree* BinarySearchTree::search(BinarySearchTree* root, int value)
+BinarySearchTree* BinarySearchTree::search(BinarySearchTree* root, int key)
 {
-	if (root == nullptr || root->Value == value)
+	if (root == nullptr || root->Key == key)
 	{
 		return root;
 	}
-	if (value < root->Value)
+	if (key < root->Key)
 	{
-		return search(root->left, value);
+		return search(root->left, key);
 	}
-	return search(root->right, value);
+	return search(root->right, key);
 }
 
-BinarySearchTree* BinarySearchTree::erase(BinarySearchTree* root, int value)
+BinarySearchTree* BinarySearchTree::erase(BinarySearchTree* root, int key)
 {
 	if (root == nullptr)
 	{
 		return root;
 	}
 
-	if (value < root->Value)
+	if (key < root->Key)
 	{
-		root->left = erase(root->left, value);
+		root->left = erase(root->left, key);
 	}
-	else if (value > root->Value)
+	else if (key > root->Key)
 	{
-		root->right = erase(root->right, value);
+		root->right = erase(root->right, key);
 	}
 	else
 	{
@@ -71,8 +71,9 @@ BinarySearchTree* BinarySearchTree::erase(BinarySearchTree* root, int value)
 		}
 
 		BinarySearchTree* temp = findMin(root->right);
+		root->Key = temp->Key;
 		root->Value = temp->Value;
-		root->right = erase(root->right, temp->Value);
+		root->right = erase(root->right, temp->Key);
 	}
 	return root;
 }
@@ -112,6 +113,7 @@ void BinarySearchTree::toString(BinarySearchTree* root)
 		return;
 	}
 	toString(root->left);
-	std::cout << root->Value << " ";
+	std::cout << "(" << root->Key << ":" << root->Value << ") ";
 	toString(root->right);
 }
+

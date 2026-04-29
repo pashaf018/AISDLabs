@@ -8,6 +8,7 @@ HashTableChains::HashTableChains(int size)
 	}
 	Size = size;
 	HashTable = std::vector<BinarySearchTree*>(Size, nullptr);
+	MemoryUsage = std::vector<int>(Size, 0);
 	Count = 0;
 }
 
@@ -21,7 +22,9 @@ bool HashTableChains::reIndex(int newSize)
 	}
 
 	std::vector<BinarySearchTree*> temp = HashTable;
+	MemoryUsage.clear();
 	Size = newSize;
+	MemoryUsage = std::vector<int>(Size,0);
 	HashTable = std::vector<BinarySearchTree*>(newSize, nullptr);
 	for (int i = 0; i < Count; i++)
 	{
@@ -33,18 +36,19 @@ bool HashTableChains::reIndex(int newSize)
 				break;
 			}
 			Count--;
-			insert(p->Value);
-			temp[i] = temp[i]->erase(temp[i], p->Value);
+			insert(p->Key,p->Value);
+			temp[i] = temp[i]->erase(temp[i], p->Key);
 		}
 	}
 	temp.clear();
 	return true;
 }
 
-void HashTableChains::insert(int value)
+void HashTableChains::insert(int key, int value)
 {
-	int hash = hashFunction(abs(value));
-	HashTable[hash] = HashTable[hash]->insert(HashTable[hash], value);
+	int hash = hashFunction(abs(key));
+	HashTable[hash] = HashTable[hash]->insert(HashTable[hash], key, value);
+	MemoryUsage[hash] += sizeof(BinarySearchTree);
 	Count++;
 	if (((double)Count / (double)Size) > 0.7)
 	{
@@ -52,17 +56,29 @@ void HashTableChains::insert(int value)
 	}
 }
 
-bool HashTableChains::erase(int value)
+bool HashTableChains::erase(int key)
 {
-	int hash = hashFunction(abs(value));
-	BinarySearchTree* deleting = HashTable[hash]->search(HashTable[hash], value);
+	int hash = hashFunction(abs(key));
+	BinarySearchTree* deleting = HashTable[hash]->search(HashTable[hash], key);
 	if (deleting == nullptr)
 	{
 		return false;
 	}
-	HashTable[hash] = HashTable[hash]->erase(HashTable[hash], value);
+	HashTable[hash] = HashTable[hash]->erase(HashTable[hash], key);
 	Count--;
+	MemoryUsage[hash] -= sizeof(BinarySearchTree);
 	return true;
+}
+
+int* HashTableChains::search(int key)
+{
+	int hash = hashFunction(abs(key));
+	BinarySearchTree* found = HashTable[hash]->search(HashTable[hash],key);
+	if (found == nullptr)
+	{
+		return nullptr;
+	}
+	return &found->Value;
 }
 
 int HashTableChains::getSize() { return Size; }
@@ -75,4 +91,14 @@ void HashTableChains::printString()
 		HashTable[i]->toString(HashTable[i]);
 		std::cout << " ] ";
 	}
+}
+
+int HashTableChains::getMemory()
+{
+	int result = 0;
+	for (int i = 0; i < Size; i++)
+	{
+		result += MemoryUsage[i];
+	}
+	return result + sizeof(Size) + sizeof(Count) + sizeof(HashTable.capacity() * sizeof(BinarySearchTree*));
 }

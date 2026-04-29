@@ -3,13 +3,14 @@
 
 struct BinarySearchTree
 {
+	int Key;
 	int Value;
 	BinarySearchTree* left, * right;
-	BinarySearchTree(int value) : Value(value), left(nullptr), right(nullptr) {}
+	BinarySearchTree(int key, int value) :Key(key), Value(value), left(nullptr), right(nullptr) {}
 
 	BinarySearchTree* findMin(BinarySearchTree*);
 
-	BinarySearchTree* insert(BinarySearchTree*, int);
+	BinarySearchTree* insert(BinarySearchTree*, int, int);
 
 	BinarySearchTree* search(BinarySearchTree*, int);
 

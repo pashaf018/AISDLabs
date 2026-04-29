@@ -10,6 +10,8 @@ private:
 	int Size;
 
 	int Count;
+
+	std::vector<int> MemoryUsage;
 public:
 	HashTableChains(int);
 
@@ -17,11 +19,15 @@ public:
 
 	bool reIndex(int);
 
-	void insert(int);
+	void insert(int, int);
+
+	int* search(int);
 
 	bool erase(int);
 
 	int getSize();
 
 	void printString();
+
+	int getMemory();
 };
