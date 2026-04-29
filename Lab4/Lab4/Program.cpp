@@ -1,6 +1,7 @@
 #include "Includes.h";
 #include "HashTableLinear.h"
 #include "HashTableChains.h"
+#include "AnotherHashTable.h"
 
 void main()
 {
@@ -55,4 +56,31 @@ void main()
 	hashTable.insert(10);
 	hashTable.insert(3);
 	hashTable.printString();*/
+
+
+	AnotherHashTable hashTable = AnotherHashTable(4);
+	hashTable.insert(10, 500);
+	hashTable.toString();
+	hashTable.printBloomFilter();
+	hashTable.insert(15, 431);
+	hashTable.toString();
+	hashTable.printBloomFilter();
+	hashTable.insert(5, 123);
+	hashTable.toString();
+	hashTable.printBloomFilter();
+	std::cout << hashTable.checkBloomFilter(123) << std::endl;
+	std::cout << hashTable.checkBloomFilter(5) << std::endl;
+	hashTable.insert(62, 512621500);
+	hashTable.toString();
+	hashTable.printBloomFilter();
+	hashTable.insert(321, 1231);
+	hashTable.toString();
+	hashTable.printBloomFilter();
+	std::cout << hashTable.checkBloomFilter(18) << std::endl;
+	hashTable.insert(1256, 1241);
+	hashTable.toString();
+	hashTable.printBloomFilter();
+	hashTable.insert(123, 1242156);
+	hashTable.toString();
+	hashTable.printBloomFilter();
 }

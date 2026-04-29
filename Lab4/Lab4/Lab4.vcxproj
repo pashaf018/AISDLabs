@@ -123,6 +123,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AnotherHashTable.h" />
+    <ClInclude Include="BloomFilter.h" />
     <ClInclude Include="HashElement.h" />
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="HashTableChains.h" />
@@ -131,6 +133,8 @@
     <ClInclude Include="TreeElement.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnotherHashTable.cpp" />
+    <ClCompile Include="BloomFilter.cpp" />
     <ClCompile Include="HashElement.cpp" />
     <ClCompile Include="BinarySearchTree.cpp" />
     <ClCompile Include="HashTableChains.cpp" />

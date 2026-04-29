@@ -10,5 +10,6 @@ HashElement::HashElement(int key, int value)
 HashElement::HashElement()
 {
 	Key = -1;
+	Value = 0;
 	Removed = true;
 }
