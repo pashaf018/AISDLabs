@@ -1,10 +1,12 @@
 #include <Windows.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #define MAX_ELEMENTS 100000
 #define Test1 10000
 #define Test2 20000
 #define Test3 40000
+#define N 100;
 
 struct Collection 
 {
@@ -221,10 +223,10 @@ struct List* partitionList(struct List* list,struct List* low, struct List* high
 
 void quickSortList(struct List* list) 
 {
-	if () 
+	/*if () 
 	{
 
-	}
+	}*/
 }
 
 void showArray(int* arr,int arrlength) 
@@ -422,6 +424,14 @@ double sortTest(int* arr, int arrlength, int count, enum Sort sort)
 
 }
 
+int compare(const void* a, const void* b)
+{
+	int A = *(int*)a;
+	int B = *(int*)b;
+
+	return (A > B) - (A < B);
+}
+
 void main() 
 {
 	SetConsoleCP(1251);//asokidaskid;l
@@ -464,8 +474,24 @@ void main()
 	int arr2[Test3];
 	printf("Сортировка Вставками c %d элементами - %f\n", Test3, sortTest(arr2, Test3, 100, QuickSort));*/
 
-	struct List* root = (struct List*)malloc(sizeof(struct List));
+	/*struct List* root = (struct List*)malloc(sizeof(struct List));
 	fillList(root, Test1);
 	struct List* reserve = copyList(root);
-	printf("%f - среднее время сортировки Вставками\n", sortListTest(root, reserve, 10, InsertSort));
+	printf("%f - среднее время сортировки Вставками\n", sortListTest(root, reserve, 10, InsertSort));*/
+
+	const int B = 10000000;
+
+	int* arr = malloc(B * sizeof(int));
+
+	double result = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		time_t start = clock();
+		qsort(arr, 100,sizeof(int),compare);
+		time_t end = clock();
+		result += (double)(end - start) / CLOCKS_PER_SEC;
+	}
+	result = result / B;
+	printf("Structure\tN\tCustom(ms)\tStandart(ms)\tC_memory\tS_memory\n");
+	printf("quickSort |\t %d |\t %lf |\t %lf |\t\n", B, sortTest(arr, B, 5, QuickSort),result);
 }
