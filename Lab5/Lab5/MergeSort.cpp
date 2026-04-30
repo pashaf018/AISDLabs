@@ -1,5 +1,5 @@
 #include "MergeSort.h"
-//#include "BubbleSort.h"
+#include "BubbleSort.h"
 
 void MergeSort::mergeSort(std::vector<int>& arr, int left, int right)
 {
@@ -67,19 +67,20 @@ void MergeSort::merge(std::vector<int>& arr, int left, int mid, int right)
 
 }
 
-//double MergeSort::testMergeSorting(int count)
+//long double MergeSort::testMergeSorting(int count)
 //{
-//	double result = 0;
+//	auto start = std::chrono::high_resolution_clock::now();
 //
 //
 //	for (int i = 0; i < count; i++)
 //	{
 //		std::vector<int> arr = generateRandomArray(1000);
-//		time_t t1 = clock();
 //		mergeSort(arr, 0, 999);
-//		time_t t2 = clock();
-//		result += (double)(t2 - t1) / CLOCKS_PER_SEC;
 //	}
 //
-//	return (double)(result / count);
+//	auto end = std::chrono::high_resolution_clock::now();
+//
+//
+//	std::chrono::duration<long double> duration = end - start;
+//	return duration;
 //}
