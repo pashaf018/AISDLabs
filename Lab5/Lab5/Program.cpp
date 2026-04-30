@@ -3,6 +3,7 @@
 #include "MergeSort.h"
 #include "BubbleSort.h"
 #include "Stack.h"
+#include "LinkedList.h"
 
 int compare(const void* a, const void* b)
 {
@@ -196,67 +197,127 @@ void main()
 
 	//Stack
 
-	const int N = 1000000;
-	std::stack<int> standart;
+	//const int N = 1000000;
+	//std::stack<int> standart;
 
 
-	//вставка
+	////вставка
+	//auto start = std::chrono::high_resolution_clock::now();
+
+	//for (int i = 0; i < N; i++)
+	//{
+	//	standart.push(rand() % 100000);
+	//}
+
+	//auto end = std::chrono::high_resolution_clock::now();
+
+	//std::chrono::duration<long double> duration = end - start;
+
+	////pop + top
+	//auto start1 = std::chrono::high_resolution_clock::now();
+
+	//for (int i = 0; i < N; i++)
+	//{
+	//	int value = standart.top();
+	//	standart.pop();
+	//}
+
+	//auto end1 = std::chrono::high_resolution_clock::now();
+
+	//std::chrono::duration<long double> duration1 = end1 - start1;
+
+
+	////Моя
+	//
+	//Stack stack;
+
+	////push
+	//auto start2 = std::chrono::high_resolution_clock::now();
+
+	//for (int i = 0; i < N; i++)
+	//{
+	//	stack.push(rand() % 100000);
+	//}
+
+	//auto end2 = std::chrono::high_resolution_clock::now();
+
+	//std::chrono::duration<long double> duration2 = end2 - start2;
+
+	////pop + top
+	//auto start3 = std::chrono::high_resolution_clock::now();
+
+	//for (int i = 0; i < N; i++)
+	//{
+	//	int value = stack.top();
+	//	stack.pop();
+	//}
+
+	//auto end3 = std::chrono::high_resolution_clock::now();
+
+	//std::chrono::duration<long double> duration3 = end3 - start3;
+
+
+	//std::cout << "\tStructure\tN\tCustom(ms)\tStandart(ms)\tC_memory\tS_memory" << std::endl;
+	//std::cout << std::fixed << std::setprecision(8) << "Stack.push() |\t" << N << " |\t" << duration2.count() << " |\t" << duration.count() << " |\t" << std::endl;
+	//std::cout << "Stack.top().pop() |\t" << N << " |\t" << duration3.count() << " | \t" << duration1.count() << " | \t" << std::endl;
+
+
+	//LinkedList
+	
+	const int N = 100000;
+
+	std::list<int> listS;
+
+
+	//push_back
 	auto start = std::chrono::high_resolution_clock::now();
 
 	for (int i = 0; i < N; i++)
 	{
-		standart.push(rand() % 100000);
+		listS.push_back(rand() % 10000);
 	}
 
 	auto end = std::chrono::high_resolution_clock::now();
-
 	std::chrono::duration<long double> duration = end - start;
 
-	//pop + top
+	//front + pop_front
 	auto start1 = std::chrono::high_resolution_clock::now();
 
 	for (int i = 0; i < N; i++)
 	{
-		int value = standart.top();
-		standart.pop();
+		int value = listS.front();
+		listS.pop_front();
 	}
 
 	auto end1 = std::chrono::high_resolution_clock::now();
-
 	std::chrono::duration<long double> duration1 = end1 - start1;
 
-
-	//Моя
-	
-	Stack stack;
+	LinkedList MyList;
 
 	//push
 	auto start2 = std::chrono::high_resolution_clock::now();
 
 	for (int i = 0; i < N; i++)
 	{
-		stack.push(rand() % 100000);
+		MyList.push_back(rand() % 10000);
 	}
 
 	auto end2 = std::chrono::high_resolution_clock::now();
-
 	std::chrono::duration<long double> duration2 = end2 - start2;
 
-	//pop + top
+	//front + pop_front()
 	auto start3 = std::chrono::high_resolution_clock::now();
 
 	for (int i = 0; i < N; i++)
 	{
-		int value = stack.top();
-		stack.pop();
+		int* value = MyList.front();
+		MyList.pop_front();
 	}
 
 	auto end3 = std::chrono::high_resolution_clock::now();
-
 	std::chrono::duration<long double> duration3 = end3 - start3;
 
-
 	std::cout << "\tStructure\tN\tCustom(ms)\tStandart(ms)\tC_memory\tS_memory" << std::endl;
-	std::cout << std::fixed << std::setprecision(8) << "Stack.push() |\t" << N << " |\t" << duration2.count() << " |\t" << duration.count() << " |\t" << std::endl;
-	std::cout << "Stack.top().pop() |\t" << N << " |\t" << duration3.count() << " | \t" << duration1.count() << " | \t" << std::endl;
+	std::cout << std::fixed << std::setprecision(8) << "List.push() |\t" << N << " |\t" << duration2.count() << " |\t" << duration.count() << " |\t" << std::endl;
+	std::cout << "List.front().pop() |\t" << N << " |\t" << duration3.count() << " | \t" << duration1.count() << " | \t" << std::endl;
 }

@@ -126,6 +126,8 @@
     <ClCompile Include="BinarySearchTree.cpp" />
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="HashTableChains.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="LinkedListNode.cpp" />
     <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Stack.cpp" />
@@ -136,6 +138,8 @@
     <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="HashTableChains.h" />
     <ClInclude Include="Includes.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="LinkedListNode.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StackList.h" />
