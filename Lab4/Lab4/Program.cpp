@@ -23,7 +23,7 @@ void main()
 	hashTable.insert(7, 500);
 	res1 = hashTable.toString();
 	std::cout << res1 << std::endl;
-	hashTable.insert(6, 300);
+	hashTable.insert(16, 300);
 	res1 = hashTable.toString();
 	std::cout << res1 << std::endl;
 	hashTable.insert(15, 400);
