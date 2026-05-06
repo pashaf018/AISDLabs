@@ -39,9 +39,39 @@ void InsertSort(std::list<int>& arr)
 	}
 }
 
-void quickSort(std::list<int>& arr)
+int partition(std::list<int>& arr, int low, int high)
 {
+	std::list<int>::iterator pivot = FindEl(arr,low);
+	int i = low;
+	int j = high;
 
+	while (i < j)
+	{
+		while (*FindEl(arr,i) <= *pivot && i <= high - 1)
+		{
+			i++;
+		}
+		while (*FindEl(arr,j) > *pivot && j >= low + 1)
+		{
+			j--;
+		}
+		if (i < j)
+		{
+			arr.splice(FindEl(arr, i), arr, FindEl(arr, j));
+		}
+	}
+	arr.splice(FindEl(arr, low), arr, FindEl(arr, j));
+	return j;
+}
+
+void quickSort(std::list<int>& arr, int low, int high)
+{
+	if (low < high)
+	{
+		int p = partition(arr, low, high);
+		quickSort(arr, low, p - 1);
+		quickSort(arr, p + 1, high);
+	}
 }
 
 void PrintList(std::list<int> arr)
@@ -58,15 +88,22 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	const int N = 10;
+	const int N = 100000;
 	std::list<int> arr;
 	for (int i = 0; i < N; i++)
 	{
 		arr.push_back(rand() % 100000);
 	}
-	PrintList(arr);
-	InsertSort(arr);
-	PrintList(arr);
+
+	std::chrono::duration<long double> start = std::chrono::high_resolution_clock::now();
+
+	quickSort(arr,0,arr.size()-1);
+
+	int* Arr[N];
+	for (int i = 0; i < N; i++)
+	{
+
+	}
 
 	/*std::vector<int> arr = generateRandomArray(10);
 	printArray(arr);
