@@ -28,14 +28,30 @@ void InsertSort(std::list<int>& arr)
 		for (int j = i + 1; j < arr.size(); j++)
 		{
 			std::list<int>::iterator Elj = FindEl(arr, j);
-			int first = *ElMin;
-			int second = *Elj;
-			if (first > second)
+			if (*ElMin > *Elj)
 			{
 				ElMin = Elj;
 			}
 		}
 		arr.splice(Eli, arr, ElMin);
+	}
+}
+
+void InsertSortArray(int* arr,int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		int minI = i;
+		for (int j = i + 1; j < size; j++)
+		{
+			if (arr[minI] > arr[j])
+			{
+				minI = j;
+			}
+		}
+		int temp = arr[minI];
+		arr[minI] = arr[i];
+		arr[i] = temp;
 	}
 }
 
@@ -74,6 +90,45 @@ void quickSort(std::list<int>& arr, int low, int high)
 	}
 }
 
+int partitionArray(int* arr, int low, int high)
+{
+	int pivot = arr[low];
+	int i = low;
+	int j = high;
+
+	while (i < j)
+	{
+		while (arr[i] <= pivot && i <= high - 1)
+		{
+			i++;
+		}
+		while (arr[j] > pivot && j >= low + 1)
+		{
+			j--;
+		}
+		if (i < j)
+		{
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+	}
+	int temp = arr[low];
+	arr[low] = arr[j];
+	arr[j] = temp;
+	return j;
+}
+
+void quickSortArray(int* arr, int low, int high)
+{
+	if (low < high)
+	{
+		int p = partitionArray(arr, low, high);
+		quickSortArray(arr, low, p - 1);
+		quickSortArray(arr, p + 1, high);
+	}
+}
+
 void PrintList(std::list<int> arr)
 {
 	std::cout << "\nList:\n";
@@ -84,27 +139,50 @@ void PrintList(std::list<int> arr)
 	std::cout << std::endl;
 }
 
+void PrintArray(int* arr,int N)
+{
+	std::cout << "\nArray:\n";
+	for (int i = 0; i < N; i++)
+	{
+		std::cout << "[" << arr[i] << "] ";
+	}
+	std::cout << std::endl;
+}
+
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	const int N = 100000;
+	const int N = 10;
 	std::list<int> arr;
 	for (int i = 0; i < N; i++)
 	{
 		arr.push_back(rand() % 100000);
 	}
 
-	std::chrono::duration<long double> start = std::chrono::high_resolution_clock::now();
+	auto start = std::chrono::high_resolution_clock::now();
 
 	quickSort(arr,0,arr.size()-1);
 
-	int* Arr[N];
+	auto end = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<long double> duration = start - end;
+
+	//Массив 
+	int* Arr = new int[N];
 	for (int i = 0; i < N; i++)
 	{
-
+		Arr[i] = rand() % 100000;
 	}
 
+	auto start1 = std::chrono::high_resolution_clock::now();
+
+	quickSortArray(Arr, 0,N-1);
+
+	auto end1 = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<long double> duration1 = start1 - end1;
+
+	std::cout << "Скорость сортировки на списке при " << N << " элементах: ";
+	std::cout << duration;
 	/*std::vector<int> arr = generateRandomArray(10);
 	printArray(arr);
 	SelectSort::selectSort(arr);
