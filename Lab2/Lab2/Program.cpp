@@ -7,16 +7,7 @@
 
 std::list<int>::iterator FindEl(std::list<int>& arr, int i)
 {
-	int j = 0;
-	for (std::list<int>::iterator it = arr.begin(); it != arr.end(); it++)
-	{
-		if (j == i)
-		{
-			return it;
-		}
-		j++;
-	}
-	return arr.begin();
+	return std::next(arr.begin(), i);;
 }
 
 void InsertSort(std::list<int>& arr)
@@ -153,7 +144,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	const int N = 10;
+	const int N = 1000;
 	std::list<int> arr;
 	for (int i = 0; i < N; i++)
 	{
@@ -162,10 +153,10 @@ int main()
 
 	auto start = std::chrono::high_resolution_clock::now();
 
-	quickSort(arr,0,arr.size()-1);
+	InsertSort(arr);
 
 	auto end = std::chrono::high_resolution_clock::now();
-	std::chrono::duration<long double> duration = start - end;
+	std::chrono::duration<long double> duration = end - start;
 
 	//Массив 
 	int* Arr = new int[N];
@@ -176,13 +167,13 @@ int main()
 
 	auto start1 = std::chrono::high_resolution_clock::now();
 
-	quickSortArray(Arr, 0,N-1);
+	InsertSortArray(Arr,N);
 
 	auto end1 = std::chrono::high_resolution_clock::now();
-	std::chrono::duration<long double> duration1 = start1 - end1;
+	std::chrono::duration<long double> duration1 = end1 - start1;
 
-	std::cout << "Скорость сортировки на списке при " << N << " элементах: ";
-	std::cout << duration;
+	std::cout << "Скорость сортировки на списке при " << N << " элементах: " << duration.count() << std::endl;
+	std::cout << "Скорость сортировки на массиве при " << N << " элементах: " << duration1.count() << std::endl;
 	/*std::vector<int> arr = generateRandomArray(10);
 	printArray(arr);
 	SelectSort::selectSort(arr);
